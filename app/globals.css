@@ -17,6 +17,12 @@ body {
   overflow-x: hidden;
 }
 
+.marquee-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+  text-stroke: 1px rgba(255, 255, 255, 0.9);
+}
+
 ::selection {
   background: #fff;
   color: #000;
