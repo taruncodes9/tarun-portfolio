@@ -13,7 +13,7 @@ export const profile = {
   email: "tarunchhabra763@gmail.com",
   github: "https://github.com/taruncodes9",
   linkedin: "https://www.linkedin.com/in/tarun-chhabra9/",
-  resume: "/resume.pdf",
+  resume: "/Tarun Chhabra_Backend_Resume.pdf",
 } as const;
 
 export const skills = [
