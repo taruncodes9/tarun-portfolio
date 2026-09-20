@@ -13,13 +13,13 @@ export default function Header() {
     // mix-blend-difference keeps the text legible over the white contact section.
     <header
       data-hero
-      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-5 text-white mix-blend-difference md:px-10"
+      className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-4 bg-black/10 px-4 py-4 text-white backdrop-blur-md backdrop-saturate-150 mix-blend-difference sm:px-6 sm:py-5 md:px-10"
     >
-      <ScrollLink href="#top" className="font-semibold tracking-tight">
+      <ScrollLink href="#top" className="shrink-0 font-semibold tracking-tight">
         {profile.name}
       </ScrollLink>
       <nav aria-label="Primary">
-        <ul className="flex gap-6 text-sm md:gap-8">
+        <ul className="flex gap-4 text-xs sm:gap-6 sm:text-sm md:gap-8">
           {links.map((l) => (
             <li key={l.href} className={l.mobile ? "" : "hidden sm:block"}>
               <ScrollLink

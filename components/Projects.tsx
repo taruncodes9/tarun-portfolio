@@ -120,7 +120,7 @@ export default function Projects() {
   );
 
   return (
-    <section ref={root} id="work" className="px-6 py-32 md:px-10 md:py-48">
+    <section ref={root} id="work" className="px-6 pb-32 pt-20 md:px-10 md:pb-48 md:pt-24">
       <h2 data-reveal className="mb-12 text-base font-medium md:mb-20">
         Selected projects
       </h2>

@@ -5,7 +5,7 @@ const nextConfig = {
 
   output: "export",
 
-  basePath: "/tarun-portfolio",
+    basePath: process.env.GITHUB_ACTIONS === "true" ? "/tarun-portfolio" : "",
 
   images: {
     unoptimized: true,

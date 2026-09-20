@@ -10,9 +10,9 @@ export const profile = {
     "Building modern web applications, APIs, and scalable WordPress/WooCommerce solutions.",
   about:
     "Software Developer with professional experience in PHP, Laravel, Core PHP, WordPress, and WooCommerce. I work on real-world client applications, REST APIs, database-driven systems, and custom integrations. Currently expanding my full-stack expertise with React.js, Next.js, and Node.js while building modern, scalable web solutions.",
-  email: "YOUR_EMAIL@example.com",
-  github: "https://github.com/YOUR_USERNAME",
-  linkedin: "https://www.linkedin.com/in/YOUR_USERNAME",
+  email: "tarunchhabra763@gmail.com",
+  github: "https://github.com/taruncodes9",
+  linkedin: "https://www.linkedin.com/in/tarun-chhabra9/",
   resume: "/resume.pdf",
 } as const;
 

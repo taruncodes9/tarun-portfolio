@@ -34,7 +34,7 @@ export default function Hero() {
           {profile.tagline}
         </p>
 
-        <div data-hero className="flex items-center gap-10">
+        <div data-hero className="flex flex-wrap items-center gap-x-6 gap-y-5 sm:gap-x-10">
           <Magnetic>
             <ScrollLink
               href="#work"

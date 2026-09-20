@@ -9,10 +9,16 @@ export default function About() {
           About
         </h2>
         <p
-          data-reveal
+          data-about-copy
+          aria-label={profile.about}
           className="text-[length:clamp(1.75rem,3.6vw,3.5rem)] font-semibold leading-[1.1] tracking-tighter md:col-span-9"
         >
-          {profile.about}
+          {profile.about.split(" ").map((word, index) => (
+            <span key={`${word}-${index}`} data-about-word aria-hidden="true" className="inline-block">
+              {word}
+              {index < profile.about.split(" ").length - 1 ? "\u00a0" : ""}
+            </span>
+          ))}
         </p>
       </div>
 
