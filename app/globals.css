@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: #000;
+  color: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-black font-sans text-white antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #fff;
+  color: #000;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/*
+ * Pre-hydration hidden state. The `js` class is added by an inline script in
+ * <head>, and only motion-OK visitors get this rule, so with JS off or
+ * reduced motion on, all content is simply visible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-line],
+  .js [data-hero],
+  .js [data-reveal] {
+    visibility: hidden;
+  }
+}
+
+/* Hide the native cursor only once the custom one is actually running. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
