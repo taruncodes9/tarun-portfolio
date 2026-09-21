@@ -7,9 +7,9 @@ export const profile = {
   name: "Tarun Chhabra",
   title: "Full-Stack Web Developer",
   tagline:
-    "Building modern web applications, APIs, and scalable WordPress/WooCommerce solutions.",
+    "Building scalable web applications, APIs, CRM systems, and modern backend solutions.",
   about:
-    "Software Developer with professional experience in PHP, Laravel, Core PHP, WordPress, and WooCommerce. I work on real-world client applications, REST APIs, database-driven systems, and custom integrations. Currently expanding my full-stack expertise with React.js, Next.js, and Node.js while building modern, scalable web solutions.",
+    "I’m a Software Developer focused on PHP and Laravel, with hands-on experience building CRM systems, admin panels, REST APIs, and business web applications. I also work with WordPress, WooCommerce, and MySQL, and have experience deploying applications on Apache and Nginx servers. My backend foundation comes from working with Java and Spring Boot during my internship. Currently, I’m working as a PHP/Laravel Developer at Digittrix Infotech Pvt. Ltd. while expanding my skills in React.js and Next.js.",
   email: "tarunchhabra763@gmail.com",
   github: "https://github.com/taruncodes9",
   linkedin: "https://www.linkedin.com/in/tarun-chhabra9/",
@@ -20,6 +20,11 @@ export const skills = [
   "PHP",
   "Laravel",
   "Core PHP",
+  "Java",
+  "Spring Boot",
+  "Spring MVC",
+  "Spring Data JPA",
+  "Thymeleaf",
   "JavaScript",
   "React.js",
   "Next.js",
@@ -223,33 +228,33 @@ export interface ExperienceItem {
 
 export const experience: readonly ExperienceItem[] = [
   {
-    period: "2025 – Present",
-    role: "PHP / Web Developer",
+    period: "Sept 2025 - Present",
+    role: "PHP Laravel Developer",
     company: "Digittrix Infotech Pvt. Ltd.",
     description:
-      "Working on real-world client projects using PHP, Laravel, WordPress, WooCommerce, REST APIs, and MySQL. Responsible for developing features, integrating APIs, working with databases, debugging production issues, and adapting applications to changing client requirements.",
+      "Full-time PHP/Laravel developer at Digittrix Infotech Pvt. Ltd., working on real-world client projects involving backend development, REST APIs, database management, and application deployment.",
     tags: [
       "PHP",
       "Laravel",
-      "WordPress",
-      "WooCommerce",
       "REST API",
       "MySQL",
+      "WordPress",
+      "WooCommerce",
     ],
   },
 
   {
-    period: "2025 – Present",
-    role: "Full-Stack Development",
-    company: "Personal Projects & Learning",
+    period: "Jan 2025 - July 2025",
+    role: "Internship Java",
+    company: "Pisoft Solutions",
     description:
-      "Expanding modern full-stack development skills with React.js, Next.js, and Node.js while building portfolio projects and experimenting with modern frontend architecture, APIs, animations, and deployment workflows.",
+      "Completed a Java internship at Pisoft Solutions focused on Spring Boot, Spring MVC, Thymeleaf, and Spring Data JPA, gaining hands-on experience in MVC architecture and backend web application development.",
     tags: [
-      "React.js",
-      "Next.js",
-      "Node.js",
-      "JavaScript",
-      "GSAP",
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Thymeleaf",
+      "Spring Data JPA",
     ],
   },
 ];
