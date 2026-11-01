@@ -13,14 +13,16 @@ const geist = Geist({
 
 const siteUrl = "https://taruncodes9.github.io/tarun-portfolio";
 const ogImageUrl = `${siteUrl}/og-image.png`;
+const cleanTitle = `${profile.name} | ${profile.title}`;
+const cleanDescription = `${profile.tagline} Experienced in PHP, Laravel, Java Spring Boot, MySQL, REST APIs, and C# .NET 8 desktop utilities.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} | ${profile.title} — Netflix-Inspired Portfolio`,
+    default: cleanTitle,
     template: `%s | ${profile.name}`,
   },
-  description: `${profile.tagline} Experienced in PHP, Laravel, Java Spring Boot, MySQL, REST APIs, and C# .NET 8 desktop utilities.`,
+  description: cleanDescription,
   keywords: [
     "Tarun Chhabra",
     "Tarun Chhabra Portfolio",
@@ -56,8 +58,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    title: `${profile.name} | ${profile.title} — Netflix-Inspired Portfolio`,
-    description: "Explore software projects, REST APIs, enterprise CRM systems, and desktop utilities by Tarun Chhabra in an Apple glass + Netflix streaming experience.",
+    title: cleanTitle,
+    description: "Explore software projects, REST APIs, enterprise CRM systems, and desktop utilities by Tarun Chhabra.",
     siteName: `${profile.name} Portfolio`,
     images: [
       {
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} | ${profile.title} — Netflix-Inspired Portfolio`,
+    title: cleanTitle,
     description: "Explore software projects, REST APIs, enterprise CRM systems, and desktop utilities by Tarun Chhabra.",
     images: [ogImageUrl],
     creator: "@taruncodes9",
@@ -90,7 +92,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={geist.variable} suppressHydrationWarning>
       <head>
         {/* Explicit OpenGraph & Social meta fallbacks for WhatsApp, LinkedIn, iMessage & Telegram scrapers */}
-        <meta property="og:title" content={`${profile.name} | ${profile.title} — Netflix-Inspired Portfolio`} />
+        <meta property="og:title" content={cleanTitle} />
         <meta property="og:description" content="Explore software projects, REST APIs, enterprise CRM systems, and desktop utilities by Tarun Chhabra." />
         <meta property="og:image" content={ogImageUrl} />
         <meta property="og:image:secure_url" content={ogImageUrl} />
@@ -102,7 +104,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta property="og:site_name" content={`${profile.name} Portfolio`} />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${profile.name} | ${profile.title}`} />
+        <meta name="twitter:title" content={cleanTitle} />
         <meta name="twitter:description" content="Explore software projects, REST APIs, enterprise CRM systems, and desktop utilities by Tarun Chhabra." />
         <meta name="twitter:image" content={ogImageUrl} />
         <meta name="twitter:image:alt" content={`${profile.name} Developer Portfolio`} />
