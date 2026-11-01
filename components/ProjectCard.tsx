@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Play, Plus, Info, Github, ExternalLink } from "lucide-react";
+import { Play, Info, Github } from "lucide-react";
 import type { Project } from "@/data/content";
 import ProjectCardVisual from "./ProjectCardVisual";
 
@@ -23,39 +23,39 @@ export default function ProjectCard({ project, onSelect }: Props) {
           onSelect(project);
         }
       }}
-      className="group relative flex-none w-[280px] sm:w-[320px] md:w-[360px] aspect-[16/10] cursor-pointer rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-300 hover:scale-[1.04] hover:z-30 hover:border-zinc-600 hover:shadow-2xl hover:shadow-black focus:outline-none focus:ring-2 focus:ring-[#E50914]"
+      className="group relative flex-none w-[clamp(240px,76vw,350px)] aspect-[16/10] cursor-pointer rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-300 hover:scale-[1.03] hover:z-30 hover:border-zinc-600 hover:shadow-2xl hover:shadow-black focus:outline-none focus:ring-2 focus:ring-[#E50914]"
     >
-      {/* Visual / Thumbnail */}
+      {/* Visual / Thumbnail Mockup */}
       <div className="absolute inset-0 w-full h-full">
         <ProjectCardVisual project={project} />
       </div>
 
-      {/* Netflix subtle dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
+      {/* Netflix dark vignette overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
 
       {/* Top badges */}
-      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
+      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10 pointer-events-none">
         {project.badge ? (
-          <span className="rounded bg-[#E50914] px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow">
+          <span className="rounded bg-[#E50914] px-2 py-0.5 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-white shadow">
             {project.badge}
           </span>
         ) : (
           <span />
         )}
-        <span className="text-[11px] font-bold text-[#46d369]">
+        <span className="text-[10px] sm:text-[11px] font-bold text-[#46d369]">
           {project.matchScore}% Match
         </span>
       </div>
 
-      {/* Bottom Content & Hover Expansion Info */}
-      <div className="absolute bottom-0 inset-x-0 p-3.5 z-10 flex flex-col justify-end">
-        <h4 className="text-base font-bold text-white tracking-tight line-clamp-1 group-hover:text-red-400 transition-colors">
+      {/* Bottom Content & Hover Info */}
+      <div className="absolute bottom-0 inset-x-0 p-3 sm:p-3.5 z-10 flex flex-col justify-end">
+        <h4 className="text-[clamp(0.9rem,2.8vw,1.1rem)] font-bold text-white tracking-tight line-clamp-1 group-hover:text-red-400 transition-colors">
           {project.title}
         </h4>
 
-        {/* Hover drawer that slides or reveals smoothly */}
+        {/* Hover info drawer */}
         <div className="max-h-0 opacity-0 group-hover:max-h-36 group-hover:opacity-100 transition-all duration-300 ease-out overflow-hidden">
-          <p className="mt-1.5 text-xs text-zinc-300 line-clamp-2 leading-relaxed">
+          <p className="mt-1 text-[clamp(0.7rem,1.9vw,0.78rem)] text-zinc-300 line-clamp-2 leading-relaxed">
             {project.description}
           </p>
 
@@ -98,12 +98,12 @@ export default function ProjectCard({ project, onSelect }: Props) {
               <Info className="h-3.5 w-3.5" />
             </button>
 
-            <span className="ml-auto text-[11px] font-mono text-zinc-400">
+            <span className="ml-auto text-[10px] font-mono text-zinc-400">
               {project.year}
             </span>
           </div>
 
-          {/* Mini stack tags */}
+          {/* Mini tech chips */}
           <div className="mt-2 flex flex-wrap gap-1">
             {project.stack.slice(0, 3).map((tech) => (
               <span
@@ -124,4 +124,3 @@ export default function ProjectCard({ project, onSelect }: Props) {
     </div>
   );
 }
-
