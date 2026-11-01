@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import { profile, education, certifications } from "@/data/content";
-import { Code, Terminal, GraduationCap, Award, Phone, Mail, CheckCircle2 } from "lucide-react";
+import { Code, Terminal, GraduationCap, Award } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 
 export default function AboutSection() {
@@ -23,12 +23,13 @@ export default function AboutSection() {
       if (card) {
         gsap.fromTo(
           card,
-          { autoAlpha: 0, y: 35 },
+          { autoAlpha: 0, y: 35, scale: 0.98 },
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.8,
-            ease: "power2.out",
+            scale: 1,
+            duration: 0.9,
+            ease: "expo.out",
             scrollTrigger: {
               trigger: card,
               start: "top 88%",
@@ -46,9 +47,9 @@ export default function AboutSection() {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.9,
             delay: 0.15,
-            ease: "power2.out",
+            ease: "expo.out",
             scrollTrigger: {
               trigger: text,
               start: "top 88%",
@@ -66,9 +67,9 @@ export default function AboutSection() {
           {
             autoAlpha: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.9,
             delay: 0.25,
-            ease: "power2.out",
+            ease: "expo.out",
             scrollTrigger: {
               trigger: edu,
               start: "top 90%",
@@ -87,7 +88,7 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-14 sm:py-20 md:py-24 bg-[#141414] border-t border-zinc-900"
+      className="relative py-16 sm:py-24 bg-[#141414] border-t border-white/5"
     >
       <div className="mx-auto max-w-7xl px-3 sm:px-6 md:px-12">
         {/* Section Header */}
@@ -97,16 +98,16 @@ export default function AboutSection() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-12 items-start">
-          {/* Left Column: Streaming Profile Card */}
+          {/* Left Column: Apple Glass Profile Card */}
           <div data-about-card className="lg:col-span-5">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-zinc-900 via-zinc-900/90 to-black p-5 sm:p-7 border border-zinc-800 shadow-2xl">
-              <div className="flex items-center gap-3.5">
+            <div className="relative overflow-hidden rounded-3xl apple-glass p-6 sm:p-8 shadow-2xl">
+              <div className="flex items-center gap-4">
                 {/* Avatar Badge */}
-                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl bg-gradient-to-br from-red-600 to-rose-700 text-white font-black text-xl sm:text-2xl shadow-lg shadow-red-950/50 ring-2 ring-red-500/30">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-red-600 to-rose-600 text-white font-black text-2xl shadow-xl shadow-red-950/60 ring-1 ring-white/25">
                   TC
                 </div>
                 <div>
-                  <h3 className="text-[clamp(1.1rem,3vw,1.4rem)] font-bold text-white tracking-tight">
+                  <h3 className="text-[clamp(1.15rem,3vw,1.45rem)] font-bold text-white tracking-tight">
                     {profile.name}
                   </h3>
                   <p className="text-xs sm:text-sm font-medium text-red-400">
@@ -120,7 +121,7 @@ export default function AboutSection() {
               </div>
 
               {/* Streaming Metadata Details */}
-              <div className="mt-5 space-y-2.5 border-t border-zinc-800/80 pt-5 text-xs text-zinc-300">
+              <div className="mt-6 space-y-3 border-t border-white/10 pt-5 text-xs text-zinc-300">
                 <div className="flex items-center justify-between">
                   <span className="text-zinc-500">Current Role</span>
                   <span className="font-semibold text-white">PHP/Laravel Developer</span>
@@ -152,13 +153,13 @@ export default function AboutSection() {
               </div>
 
               {/* Key Highlights Metrics */}
-              <div className="mt-5 grid grid-cols-2 gap-2.5 border-t border-zinc-800/80 pt-5 text-center">
-                <div className="rounded-lg bg-zinc-900/80 p-2.5 border border-zinc-800">
-                  <div className="text-xl sm:text-2xl font-black text-white">12+</div>
+              <div className="mt-6 grid grid-cols-2 gap-3 border-t border-white/10 pt-5 text-center">
+                <div className="rounded-2xl apple-glass-pill p-3">
+                  <div className="text-2xl font-black text-white">12+</div>
                   <div className="text-[10px] text-zinc-400 mt-0.5">Projects Built</div>
                 </div>
-                <div className="rounded-lg bg-zinc-900/80 p-2.5 border border-zinc-800">
-                  <div className="text-xl sm:text-2xl font-black text-[#46d369]">7.8</div>
+                <div className="rounded-2xl apple-glass-pill p-3">
+                  <div className="text-2xl font-black text-[#46d369]">7.8</div>
                   <div className="text-[10px] text-zinc-400 mt-0.5">MCA CGPA</div>
                 </div>
               </div>
@@ -166,8 +167,8 @@ export default function AboutSection() {
           </div>
 
           {/* Right Column: Bio & Core Architecture */}
-          <div data-about-text className="lg:col-span-7 space-y-5">
-            <h2 className="text-[clamp(1.35rem,3.5vw,2.5rem)] font-black text-white tracking-tight leading-tight">
+          <div data-about-text className="lg:col-span-7 space-y-6">
+            <h2 className="text-[clamp(1.4rem,3.5vw,2.5rem)] font-black text-white tracking-tight leading-tight">
               Full-Stack Developer Specializing in Scalable Backends, APIs &amp; Modern Frameworks
             </h2>
 
@@ -175,9 +176,9 @@ export default function AboutSection() {
               {profile.about}
             </p>
 
-            <div className="grid gap-3 sm:grid-cols-2 pt-2">
-              <div className="rounded-xl bg-zinc-900/50 p-4 border border-zinc-800">
-                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white mb-1">
+            <div className="grid gap-3.5 sm:grid-cols-2 pt-2">
+              <div className="rounded-2xl apple-glass-card p-5">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white mb-1.5">
                   <Code className="h-4 w-4 text-[#E50914]" />
                   <span>Backend &amp; API Architecture</span>
                 </div>
@@ -186,8 +187,8 @@ export default function AboutSection() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-zinc-900/50 p-4 border border-zinc-800">
-                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white mb-1">
+              <div className="rounded-2xl apple-glass-card p-5">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white mb-1.5">
                   <Terminal className="h-4 w-4 text-[#E50914]" />
                   <span>Systems &amp; Frontend Integration</span>
                 </div>
@@ -200,8 +201,8 @@ export default function AboutSection() {
         </div>
 
         {/* Verified Education & Academic Credentials */}
-        <div data-about-edu className="mt-12 pt-8 border-t border-zinc-800/80">
-          <div className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400">
+        <div data-about-edu className="mt-14 pt-10 border-t border-white/10">
+          <div className="mb-5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400">
             <GraduationCap className="h-4 w-4 text-[#E50914]" />
             <span>Education &amp; Academic Credentials</span>
           </div>
@@ -210,10 +211,10 @@ export default function AboutSection() {
             {education.map((edu) => (
               <div
                 key={edu.degree}
-                className="rounded-xl bg-zinc-900/60 p-5 border border-zinc-800 hover:border-zinc-700 transition"
+                className="rounded-2xl apple-glass-card p-6"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="rounded bg-zinc-800 px-2 py-0.5 text-[10px] font-mono font-bold text-zinc-300 border border-zinc-700">
+                  <span className="rounded-full apple-glass-pill px-3 py-0.5 text-[10px] font-mono font-bold text-zinc-300">
                     {edu.badge}
                   </span>
                   <span className="text-xs font-bold text-[#46d369]">
@@ -235,7 +236,7 @@ export default function AboutSection() {
             {certifications.map((cert) => (
               <div
                 key={cert.title}
-                className="flex items-start gap-2.5 rounded-lg bg-black/40 p-3 border border-zinc-800/80 text-xs"
+                className="flex items-start gap-3 rounded-2xl apple-glass-card p-4 text-xs"
               >
                 <Award className="h-4 w-4 shrink-0 text-[#E50914] mt-0.5" />
                 <div>

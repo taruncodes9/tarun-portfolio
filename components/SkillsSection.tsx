@@ -19,13 +19,14 @@ export default function SkillsSection() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         cardsRef.current?.children ? Array.from(cardsRef.current.children) : [],
-        { autoAlpha: 0, y: 35 },
+        { autoAlpha: 0, y: 35, scale: 0.98 },
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.7,
+          scale: 1,
+          duration: 0.9,
           stagger: 0.1,
-          ease: "power2.out",
+          ease: "expo.out",
           scrollTrigger: {
             trigger: cardsRef.current,
             start: "top 88%",
@@ -42,15 +43,15 @@ export default function SkillsSection() {
   const getCategoryIcon = (iconName: string) => {
     switch (iconName) {
       case "Server":
-        return <Server className="h-4 w-4 text-[#E50914]" />;
+        return <Server className="h-5 w-5 text-[#E50914]" />;
       case "Layout":
-        return <Layout className="h-4 w-4 text-[#E50914]" />;
+        return <Layout className="h-5 w-5 text-[#E50914]" />;
       case "ShoppingBag":
-        return <ShoppingBag className="h-4 w-4 text-[#E50914]" />;
+        return <ShoppingBag className="h-5 w-5 text-[#E50914]" />;
       case "Database":
-        return <Database className="h-4 w-4 text-[#E50914]" />;
+        return <Database className="h-5 w-5 text-[#E50914]" />;
       default:
-        return <Cpu className="h-4 w-4 text-[#E50914]" />;
+        return <Cpu className="h-5 w-5 text-[#E50914]" />;
     }
   };
 
@@ -58,11 +59,11 @@ export default function SkillsSection() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative py-14 sm:py-20 md:py-24 bg-[#141414] border-t border-zinc-900"
+      className="relative py-16 sm:py-24 bg-[#141414] border-t border-white/5"
     >
       <div className="mx-auto max-w-7xl px-3 sm:px-6 md:px-12">
         {/* Header */}
-        <div className="mb-8 sm:mb-10">
+        <div className="mb-10 sm:mb-12">
           <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#E50914]">
             <span className="h-3.5 w-1 rounded-full bg-[#E50914]" />
             <span>Tech Stack &amp; Capabilities</span>
@@ -75,37 +76,37 @@ export default function SkillsSection() {
           </p>
         </div>
 
-        {/* Skill Category Cards Grid */}
-        <div ref={cardsRef} className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Apple Glass Skill Category Cards */}
+        <div ref={cardsRef} className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="group relative flex flex-col justify-between rounded-xl bg-zinc-900/60 p-5 sm:p-6 border border-zinc-800 transition-all duration-300 hover:border-zinc-600 hover:bg-zinc-900 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-950/20"
+              className="group relative flex flex-col justify-between rounded-3xl apple-glass-card p-6"
             >
               <div>
-                <div className="flex items-center justify-between mb-3.5">
-                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-lg bg-zinc-800 border border-zinc-700/60 group-hover:bg-[#E50914]/10 group-hover:border-[#E50914]/40 transition-colors">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl apple-glass-pill group-hover:scale-110 group-hover:border-[#E50914]/50 transition-all duration-300">
                     {getCategoryIcon(category.iconName)}
                   </div>
-                  <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 apple-glass-pill px-2.5 py-0.5 rounded-full">
                     {category.genre}
                   </span>
                 </div>
 
-                <h3 className="text-[clamp(0.95rem,2.5vw,1.15rem)] font-bold text-white group-hover:text-red-400 transition-colors">
+                <h3 className="text-[clamp(1rem,2.5vw,1.2rem)] font-bold text-white group-hover:text-red-400 transition-colors">
                   {category.title}
                 </h3>
-                <p className="mt-1 text-[clamp(0.7rem,1.8vw,0.78rem)] text-zinc-400 leading-relaxed">
+                <p className="mt-1.5 text-[clamp(0.7rem,1.8vw,0.78rem)] text-zinc-400 leading-relaxed">
                   {category.description}
                 </p>
               </div>
 
-              {/* Skills badges inside card */}
-              <div className="mt-5 flex flex-wrap gap-1.5 pt-3.5 border-t border-zinc-800/80">
+              {/* Skills badges */}
+              <div className="mt-6 flex flex-wrap gap-1.5 pt-4 border-t border-white/10">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded bg-black/60 px-2 py-0.5 text-[11px] font-medium text-zinc-300 border border-zinc-700/60 transition-colors group-hover:border-zinc-500"
+                    className="rounded-full apple-glass-pill px-2.5 py-0.5 text-[11px] font-medium text-zinc-300"
                   >
                     {skill}
                   </span>
@@ -115,17 +116,17 @@ export default function SkillsSection() {
           ))}
         </div>
 
-        {/* Complete Skills Badges Bar */}
-        <div className="mt-8 sm:mt-12 rounded-xl bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 p-4 sm:p-6 border border-zinc-800/80">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-3 flex items-center gap-2">
-            <Layers className="h-3.5 w-3.5 text-[#E50914]" />
+        {/* Complete Skills Badges Bar with Frosted Glass */}
+        <div className="mt-10 sm:mt-14 rounded-3xl apple-glass p-6 sm:p-8">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 mb-4 flex items-center gap-2">
+            <Layers className="h-4 w-4 text-[#E50914]" />
             <span>Complete Skills Catalog</span>
           </div>
-          <div className="flex flex-wrap gap-1.5 sm:gap-2">
+          <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full bg-zinc-800/80 px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-medium text-zinc-200 border border-zinc-700 hover:border-[#E50914] hover:text-white transition-all hover:scale-105"
+                className="rounded-full apple-glass-pill px-3.5 py-1 text-xs font-medium text-zinc-200 transition-all duration-300 hover:scale-105 active:scale-95 hover:text-white"
               >
                 {skill}
               </span>
