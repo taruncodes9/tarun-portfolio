@@ -151,6 +151,30 @@ export default function Projects() {
                     <li key={tech}>{tech}</li>
                   ))}
                 </ul>
+                {(project.href || project.github) && (
+                  <div className="mt-5 flex items-center gap-5 text-sm">
+                    {project.href && (
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition"
+                      >
+                        Live Demo ↗
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-medium text-gray-400 underline decoration-gray-400/30 underline-offset-4 hover:text-white hover:decoration-white transition"
+                      >
+                        GitHub ↗
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </li>

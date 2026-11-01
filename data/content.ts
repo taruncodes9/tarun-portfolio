@@ -40,6 +40,10 @@ export const skills = [
   "GitHub",
   "Postman",
   "GSAP",
+  "C#",
+  ".NET 8",
+  "WPF",
+  "Win32 API",
 ] as const;
 
 export type ProjectVisualKind = "delivery" | "engine" | "hub" | "handshake";
@@ -50,6 +54,8 @@ export interface Project {
   stack: readonly string[];
   /** Which schematic appears in the hover preview. */
   visual: ProjectVisualKind;
+  href?: string;
+  github?: string;
 }
 
 export const projects: readonly Project[] = [
@@ -118,6 +124,24 @@ export const projects: readonly Project[] = [
   // --------------------------------------------------
   // PERSONAL / PORTFOLIO PROJECTS
   // --------------------------------------------------
+
+  {
+    title: "WheelConvert — Radial File Converter",
+    description:
+      "A fast, background Windows 10/11 utility featuring an interactive radial pie menu HUD triggered at the cursor via global hotkey. Supports instant file conversions (Images, PDF, Word DOCX, TXT), interactive image cropping, compression, and EXIF inspection without losing active window focus.",
+    stack: [
+      ".NET 8",
+      "C#",
+      "WPF",
+      "Win32 P/Invoke",
+      "SkiaSharp",
+      "Shell COM",
+      "Inno Setup",
+    ],
+    visual: "engine",
+    href: "https://taruncodes9.github.io/WheelConvert/",
+    github: "https://github.com/taruncodes9/WheelConvert",
+  },
 
   {
     title: "Buswala — Bus Booking Platform",
