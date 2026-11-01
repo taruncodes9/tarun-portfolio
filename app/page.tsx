@@ -1,27 +1,23 @@
-import Motion from "@/components/Motion";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
+import Navbar from "@/components/Navbar";
+import HeroBanner from "@/components/HeroBanner";
 import Projects from "@/components/Projects";
-import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
+import AboutSection from "@/components/AboutSection";
+import SkillsSection from "@/components/SkillsSection";
+import ExperienceSection from "@/components/ExperienceSection";
+import ContactSection from "@/components/ContactSection";
 
-/**
- * Server component. Sections are plain markup tagged with data attributes
- * (data-line, data-hero, data-reveal, data-timeline...). <Motion> is the one
- * client boundary that finds those tags and animates them with GSAP.
- */
 export default function Page() {
   return (
-    <Motion>
-      <Header />
+    <div className="min-h-screen bg-[#141414] text-white selection:bg-[#E50914] selection:text-white">
+      <Navbar />
       <main>
-        <Hero />
-        <About />
+        <HeroBanner />
         <Projects />
-        <Experience />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
       </main>
-      <Contact />
-    </Motion>
+      <ContactSection />
+    </div>
   );
 }

@@ -7,14 +7,26 @@
 }
 
 html {
-  background: #000;
+  background: #141414;
   color: #fff;
+  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  @apply bg-black font-sans text-white antialiased;
+  @apply bg-[#141414] font-sans text-white antialiased selection:bg-[#E50914] selection:text-white;
   overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .marquee-outline {
@@ -24,30 +36,22 @@ body {
 }
 
 ::selection {
-  background: #fff;
-  color: #000;
+  background: #E50914;
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid currentColor;
+  outline: 2px solid #E50914;
   outline-offset: 4px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/*
- * Pre-hydration hidden state. The `js` class is added by an inline script in
- * <head>, and only motion-OK visitors get this rule, so with JS off or
- * reduced motion on, all content is simply visible.
- */
-@media (prefers-reduced-motion: no-preference) {
-  .js [data-line],
-  .js [data-hero],
-  .js [data-reveal] {
-    visibility: hidden;
-  }
+/* Subtle cinematic vignette */
+.netflix-vignette {
+  background: radial-gradient(circle at 50% 30%, transparent 40%, rgba(20, 20, 20, 0.8) 80%, #141414 100%);
 }
 
-/* Hide the native cursor only once the custom one is actually running. */
+/* Hide cursor when custom cursor active */
 html.has-custom-cursor,
 html.has-custom-cursor * {
   cursor: none !important;

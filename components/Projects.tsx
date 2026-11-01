@@ -1,201 +1,87 @@
 "use client";
 
-import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { FINE_MOTION, useMotionSafe } from "@/hooks/useMotionSafe";
-import { projects } from "@/data/content";
-import { ProjectVisual } from "./ProjectVisuals";
-
-const GAP = 40; // px between the pointer and the preview panel
+import React, { useState } from "react";
+import { projectCategoryRows, projects, type Project, type ProjectCategory } from "@/data/content";
+import ProjectRow from "./ProjectRow";
+import ProjectModal from "./ProjectModal";
+import { Flame, Sparkles } from "lucide-react";
 
 export default function Projects() {
-  const root = useRef<HTMLElement>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<"all" | ProjectCategory>("all");
 
-  // Hover behaviour (fine pointers only): the hovered title nudges right, the
-  // other rows dim, and a schematic preview follows the pointer.
-  useMotionSafe(
-    root,
-    (section) => {
-      const list = section.querySelector<HTMLElement>("[data-project-list]");
-      const preview = section.querySelector<HTMLElement>("[data-project-preview]");
-      if (!list || !preview) return;
-
-      const rows = gsap.utils.toArray<HTMLElement>("[data-project-row]", list);
-      const inners = rows.map((r) => r.querySelector<HTMLElement>("[data-project-inner]"));
-      const titles = rows.map((r) => r.querySelector<HTMLElement>("[data-project-title]"));
-      const visuals = gsap.utils.toArray<HTMLElement>("[data-project-visual]", preview);
-
-      gsap.set(preview, { yPercent: -50, scale: 0.92, autoAlpha: 0 });
-      const xTo = gsap.quickTo(preview, "x", { duration: 0.6, ease: "power3.out" });
-      const yTo = gsap.quickTo(preview, "y", { duration: 0.6, ease: "power3.out" });
-
-      let side: "left" | "right" = "right";
-      let shown = false;
-
-      // Follow the pointer; flip to its left side near the right edge of the screen.
-      const place = (e: PointerEvent, instant: boolean) => {
-        const nextSide =
-          e.clientX + GAP + preview.offsetWidth > window.innerWidth - 16 ? "left" : "right";
-        if (nextSide !== side || instant) {
-          side = nextSide;
-          const xPercent = side === "left" ? -100 : 0;
-          if (instant) gsap.set(preview, { xPercent });
-          else gsap.to(preview, { xPercent, duration: 0.5, ease: "power3.out" });
-        }
-        const x = e.clientX + (side === "left" ? -GAP : GAP);
-        if (instant) gsap.set(preview, { x, y: e.clientY });
-        else {
-          xTo(x);
-          yTo(e.clientY);
-        }
-      };
-
-      const show = (index: number, e: PointerEvent) => {
-        visuals.forEach((v, i) => gsap.set(v, { autoAlpha: i === index ? 1 : 0 }));
-        inners.forEach((el, i) =>
-          gsap.to(el, {
-            opacity: i === index ? 1 : 0.3,
-            duration: 0.4,
-            ease: "power3.out",
-            overwrite: "auto",
-          }),
-        );
-        titles.forEach((el, i) =>
-          gsap.to(el, {
-            x: i === index ? 24 : 0,
-            duration: 0.6,
-            ease: "power3.out",
-            overwrite: "auto",
-          }),
-        );
-        if (!shown) {
-          shown = true;
-          place(e, true);
-          gsap.to(preview, {
-            autoAlpha: 1,
-            scale: 1,
-            duration: 0.5,
-            ease: "power3.out",
-            overwrite: "auto",
-          });
-        }
-      };
-
-      const hide = () => {
-        shown = false;
-        inners.forEach((el) =>
-          gsap.to(el, { opacity: 1, duration: 0.4, ease: "power3.out", overwrite: "auto" }),
-        );
-        titles.forEach((el) =>
-          gsap.to(el, { x: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" }),
-        );
-        gsap.to(preview, {
-          autoAlpha: 0,
-          scale: 0.92,
-          duration: 0.35,
-          ease: "power3.out",
-          overwrite: "auto",
-        });
-      };
-
-      const onMove = (e: PointerEvent) => {
-        if (shown) place(e, false);
-      };
-
-      const enterHandlers = rows.map((row, i) => {
-        const handler = (e: PointerEvent) => show(i, e);
-        row.addEventListener("pointerenter", handler);
-        return handler;
-      });
-      list.addEventListener("pointermove", onMove);
-      list.addEventListener("pointerleave", hide);
-
-      return () => {
-        rows.forEach((row, i) => row.removeEventListener("pointerenter", enterHandlers[i]));
-        list.removeEventListener("pointermove", onMove);
-        list.removeEventListener("pointerleave", hide);
-      };
-    },
-    FINE_MOTION,
-  );
+  const filteredRows =
+    activeFilter === "all"
+      ? projectCategoryRows
+      : projectCategoryRows.filter((r) => r.id === activeFilter);
 
   return (
-    <section ref={root} id="work" className="px-6 pb-32 pt-20 md:px-10 md:pb-48 md:pt-24">
-      <h2 data-reveal className="mb-12 text-base font-medium md:mb-20">
-        Selected projects
-      </h2>
-
-      <ul data-project-list className="border-t border-white/15">
-        {projects.map((project) => (
-          <li
-            key={project.title}
-            data-reveal
-            data-project-row
-            data-cursor
-            className="border-b border-white/15"
-          >
-            <div
-              data-project-inner
-              className="grid gap-5 py-10 md:grid-cols-12 md:gap-8 md:py-14"
-            >
-              <h3
-                data-project-title
-                className="text-[length:clamp(2rem,5.2vw,5rem)] font-bold leading-none tracking-tighter md:col-span-7"
-              >
-                {project.title}
-              </h3>
-              <div className="md:col-span-5 md:pt-1">
-                <p className="text-lg text-gray-400">{project.description}</p>
-                <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm text-gray-500">
-                  {project.stack.map((tech) => (
-                    <li key={tech}>{tech}</li>
-                  ))}
-                </ul>
-                {(project.href || project.github) && (
-                  <div className="mt-5 flex items-center gap-5 text-sm">
-                    {project.href && (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition"
-                      >
-                        Live Demo ↗
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-medium text-gray-400 underline decoration-gray-400/30 underline-offset-4 hover:text-white hover:decoration-white transition"
-                      >
-                        GitHub ↗
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
+    <div id="projects" className="relative py-12 md:py-16 bg-[#141414]">
+      {/* Netflix Section Intro & Quick Filters */}
+      <div className="px-4 sm:px-8 md:px-12 mb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/80 pb-6">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E50914]">
+              <Flame className="h-4 w-4" />
+              <span>Streaming Catalog</span>
             </div>
-          </li>
-        ))}
-      </ul>
-
-      {/*
-        Keep this a direct child of <section>. It is position: fixed, and any
-        ancestor with a transform (like the reveal wrappers) would re-anchor it.
-      */}
-      <div
-        data-project-preview
-        aria-hidden="true"
-        className="pointer-events-none invisible fixed left-0 top-0 z-40 h-60 w-80 overflow-hidden bg-white text-black"
-      >
-        {projects.map((project) => (
-          <div key={project.title} data-project-visual className="invisible absolute inset-0">
-            <ProjectVisual kind={project.visual} />
+            <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">
+              Explore Projects
+            </h2>
+            <p className="mt-1 text-sm text-zinc-400">
+              Browse production architectures, real-world client platforms, and software solutions.
+            </p>
           </div>
-        ))}
+
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+            <button
+              onClick={() => setActiveFilter("all")}
+              className={`rounded-full px-3.5 py-1 text-xs font-semibold whitespace-nowrap transition-all ${
+                activeFilter === "all"
+                  ? "bg-white text-black shadow"
+                  : "bg-zinc-800/80 text-zinc-300 hover:bg-zinc-700 hover:text-white"
+              }`}
+            >
+              All Categories
+            </button>
+            {projectCategoryRows.map((row) => (
+              <button
+                key={row.id}
+                onClick={() => setActiveFilter(row.id)}
+                className={`rounded-full px-3.5 py-1 text-xs font-semibold whitespace-nowrap transition-all ${
+                  activeFilter === row.id
+                    ? "bg-[#E50914] text-white shadow-lg shadow-red-900/30"
+                    : "bg-zinc-800/80 text-zinc-300 hover:bg-zinc-700 hover:text-white"
+                }`}
+              >
+                {row.title.split(" & ")[0]}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+
+      {/* Rows */}
+      <div className="space-y-4">
+        {filteredRows.map((row) => {
+          const rowProjects = projects.filter((p) => p.categories.includes(row.id));
+          return (
+            <ProjectRow
+              key={row.id}
+              row={row}
+              projects={rowProjects}
+              onSelectProject={setSelectedProject}
+            />
+          );
+        })}
+      </div>
+
+      {/* Project Details Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+    </div>
   );
 }

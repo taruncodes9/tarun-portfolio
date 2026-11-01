@@ -12,12 +12,12 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: `${profile.name} | ${profile.title}`,
+  title: `${profile.name} | ${profile.title} - Netflix-Inspired Portfolio`,
   description: profile.tagline,
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#141414",
   colorScheme: "dark",
 };
 
