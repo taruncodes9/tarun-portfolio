@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import { profile } from "@/data/content";
-import { Code, Terminal, CheckCircle2 } from "lucide-react";
+import { profile, education, certifications } from "@/data/content";
+import { Code, Terminal, GraduationCap, Award, Phone, Mail, CheckCircle2 } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 
 export default function AboutSection() {
@@ -18,6 +18,7 @@ export default function AboutSection() {
     const ctx = gsap.context(() => {
       const card = sectionRef.current?.querySelector("[data-about-card]");
       const text = sectionRef.current?.querySelector("[data-about-text]");
+      const edu = sectionRef.current?.querySelector("[data-about-edu]");
 
       if (card) {
         gsap.fromTo(
@@ -51,6 +52,26 @@ export default function AboutSection() {
             scrollTrigger: {
               trigger: text,
               start: "top 88%",
+              toggleActions: "play none none none",
+              once: true,
+            },
+          },
+        );
+      }
+
+      if (edu) {
+        gsap.fromTo(
+          edu,
+          { autoAlpha: 0, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.25,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: edu,
+              start: "top 90%",
               toggleActions: "play none none none",
               once: true,
             },
@@ -109,12 +130,24 @@ export default function AboutSection() {
                   <span className="font-semibold text-white">Digittrix Infotech Pvt. Ltd.</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-zinc-500">Focus Areas</span>
-                  <span className="font-semibold text-white">REST APIs, CRM, Systems</span>
+                  <span className="text-zinc-500">Internship</span>
+                  <span className="font-semibold text-white">Pisoft Informatics (Java Backend)</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-zinc-500">Servers &amp; Deployments</span>
-                  <span className="font-semibold text-white">Nginx, Apache, Linux</span>
+                  <span className="text-zinc-500">Education</span>
+                  <span className="font-semibold text-white">MCA (Chitkara) • BCA (Punjabi Univ)</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-500">Phone</span>
+                  <a href={`tel:${profile.phone}`} className="font-mono text-zinc-300 hover:text-white transition">
+                    {profile.phone}
+                  </a>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-500">Email</span>
+                  <a href={`mailto:${profile.email}`} className="font-mono text-zinc-300 hover:text-white transition truncate max-w-[200px]">
+                    {profile.email}
+                  </a>
                 </div>
               </div>
 
@@ -125,8 +158,8 @@ export default function AboutSection() {
                   <div className="text-[10px] text-zinc-400 mt-0.5">Projects Built</div>
                 </div>
                 <div className="rounded-lg bg-zinc-900/80 p-2.5 border border-zinc-800">
-                  <div className="text-xl sm:text-2xl font-black text-[#46d369]">100%</div>
-                  <div className="text-[10px] text-zinc-400 mt-0.5">Test Pass Rate</div>
+                  <div className="text-xl sm:text-2xl font-black text-[#46d369]">7.8</div>
+                  <div className="text-[10px] text-zinc-400 mt-0.5">MCA CGPA</div>
                 </div>
               </div>
             </div>
@@ -149,7 +182,7 @@ export default function AboutSection() {
                   <span>Backend &amp; API Architecture</span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-zinc-400 leading-relaxed">
-                  Designing robust REST APIs, multi-tenant databases, microservices, and webhook pipelines that handle high concurrency.
+                  Designing robust REST APIs in PHP/Laravel and Java Spring Boot with MySQL data normalization and third-party integrations (Twilio, Brevo, PHPMailer).
                 </p>
               </div>
 
@@ -159,10 +192,58 @@ export default function AboutSection() {
                   <span>Systems &amp; Frontend Integration</span>
                 </div>
                 <p className="text-[11px] sm:text-xs text-zinc-400 leading-relaxed">
-                  Bridging dynamic Next.js/React user experiences with high-performance desktop tools (.NET 8/C#) and automated deployments.
+                  Bridging dynamic Next.js/React user experiences with high-performance desktop utilities (.NET 8/C#) and automated deployments on Nginx and Apache.
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Verified Education & Academic Credentials */}
+        <div data-about-edu className="mt-12 pt-8 border-t border-zinc-800/80">
+          <div className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400">
+            <GraduationCap className="h-4 w-4 text-[#E50914]" />
+            <span>Education &amp; Academic Credentials</span>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {education.map((edu) => (
+              <div
+                key={edu.degree}
+                className="rounded-xl bg-zinc-900/60 p-5 border border-zinc-800 hover:border-zinc-700 transition"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="rounded bg-zinc-800 px-2 py-0.5 text-[10px] font-mono font-bold text-zinc-300 border border-zinc-700">
+                    {edu.badge}
+                  </span>
+                  <span className="text-xs font-bold text-[#46d369]">
+                    {edu.grade}
+                  </span>
+                </div>
+                <h4 className="text-base font-bold text-white">
+                  {edu.degree} — {edu.field}
+                </h4>
+                <p className="text-xs text-zinc-400 mt-1">
+                  {edu.institution} • {edu.period}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Certifications & Achievements */}
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {certifications.map((cert) => (
+              <div
+                key={cert.title}
+                className="flex items-start gap-2.5 rounded-lg bg-black/40 p-3 border border-zinc-800/80 text-xs"
+              >
+                <Award className="h-4 w-4 shrink-0 text-[#E50914] mt-0.5" />
+                <div>
+                  <div className="font-bold text-zinc-200">{cert.title}</div>
+                  <div className="text-[11px] text-zinc-400 mt-0.5">{cert.detail} ({cert.issuer})</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

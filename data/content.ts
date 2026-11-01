@@ -1,49 +1,115 @@
 /**
  * Personal portfolio / resume content
- * Tarun Chhabra - Full-Stack Web Developer
+ * Tarun Chhabra - Full-Stack Web Developer & Backend Engineer
+ * Authentic data from resume + Digittrix Infotech experience
  */
 
 export const profile = {
   name: "Tarun Chhabra",
   title: "Full-Stack Web Developer",
+  phone: "+91 9781116662",
   tagline:
-    "Building scalable web applications, APIs, CRM systems, and modern backend solutions.",
+    "Building scalable web applications, REST APIs, enterprise CRM systems, and high-performance backend solutions.",
   about:
-    "I’m a Software Developer focused on PHP and Laravel, with hands-on experience building CRM systems, admin panels, REST APIs, and business web applications. I also work with WordPress, WooCommerce, and MySQL, and have experience deploying applications on Apache and Nginx servers. My backend foundation comes from working with Java and Spring Boot during my internship. Currently, I’m working as a PHP/Laravel Developer at Digittrix Infotech Pvt. Ltd. while expanding my skills in React.js and Next.js.",
+    "I am a Software Developer with a Master of Computer Applications (MCA) from Chitkara University and a strong foundation in backend architecture. Currently working as a Full-Time PHP/Laravel Developer at Digittrix Infotech Pvt. Ltd., I engineer production CRM systems, multi-restaurant APIs, custom WooCommerce solutions, and third-party gateway integrations (Twilio, Brevo). My backend foundation was built with Java, Spring Boot, Hibernate, and MySQL during my internship at Pisoft Informatics. I also develop modern Windows utilities using C# and .NET 8, and build modern interactive frontends with React.js and Next.js.",
   email: "tarunchhabra763@gmail.com",
   github: "https://github.com/taruncodes9",
   linkedin: "https://www.linkedin.com/in/tarun-chhabra9/",
   resume: `${process.env.GITHUB_ACTIONS === "true" ? "/tarun-portfolio" : ""}/Tarun Chhabra_Backend_Resume.pdf`,
 } as const;
 
+export interface EducationItem {
+  degree: string;
+  field: string;
+  institution: string;
+  period: string;
+  grade: string;
+  badge: string;
+}
+
+export const education: readonly EducationItem[] = [
+  {
+    degree: "MCA",
+    field: "Master of Computer Application",
+    institution: "Chitkara University, Punjab",
+    period: "2023 - 2025",
+    grade: "7.8 CGPA",
+    badge: "POST GRADUATION",
+  },
+  {
+    degree: "BCA",
+    field: "Bachelor of Computer Application",
+    institution: "Punjabi University, Patiala",
+    period: "2020 - 2023",
+    grade: "7.2 CGPA",
+    badge: "GRADUATION",
+  },
+];
+
+export interface CertificationItem {
+  title: string;
+  issuer: string;
+  detail: string;
+}
+
+export const certifications: readonly CertificationItem[] = [
+  {
+    title: "Java Deep Diving – From the Beginning",
+    issuer: "Udemy",
+    detail: "Comprehensive mastery of Core Java, OOPs, Collections, and Multi-threading.",
+  },
+  {
+    title: "Chitkara University Typing Competition (3rd Place)",
+    issuer: "Chitkara University",
+    detail: "Achieved a verified typing speed of 42 WPM in university-level competition.",
+  },
+];
+
 export const skills = [
+  // Backend & Core Languages
   "PHP",
   "Laravel",
   "Core PHP",
   "Java",
   "Spring Boot",
+  "Hibernate",
   "Spring MVC",
   "Spring Data JPA",
   "Thymeleaf",
-  "JavaScript",
-  "React.js",
-  "Next.js",
-  "Node.js",
-  "React Native",
-  "WordPress",
-  "Custom WordPress Plugins",
-  "REST APIs",
-  "WooCommerce",
-  "MySQL/MariaDB",
-  "MongoDB",
-  "Git",
-  "GitHub",
-  "Postman",
-  "GSAP",
   "C#",
   ".NET 8",
   "WPF",
   "Win32 API",
+  "Node.js",
+  "JavaScript",
+  "SQL",
+  // Databases
+  "MySQL",
+  "MariaDB",
+  "MongoDB",
+  // CMS & E-Commerce
+  "WordPress",
+  "WooCommerce",
+  "Custom WordPress Plugins",
+  "Shopify (Basic CMS)",
+  // APIs & Tools
+  "REST APIs",
+  "Postman",
+  "Twilio SMS & OTP",
+  "Brevo SMTP",
+  "PHPMailer",
+  "Git",
+  "GitHub",
+  "XAMPP",
+  "Nginx",
+  "Apache",
+  // Frontend
+  "React.js",
+  "Next.js",
+  "HTML5",
+  "CSS3",
+  "Tailwind CSS",
+  "GSAP",
 ] as const;
 
 export interface SkillCategory {
@@ -58,68 +124,70 @@ export const skillCategories: readonly SkillCategory[] = [
   {
     title: "Backend & Systems",
     iconName: "Server",
-    genre: "High Throughput",
-    description: "Robust server architectures, RESTful APIs, and systems programming",
+    genre: "High Performance",
+    description: "Robust MVC architectures, high-throughput REST APIs, and system utilities",
     skills: [
       "PHP",
       "Laravel",
       "Core PHP",
       "Java",
       "Spring Boot",
+      "Hibernate",
       "Spring MVC",
       "Spring Data JPA",
       "C#",
       ".NET 8",
+      "WPF",
       "Win32 API",
-      "Node.js",
-      "Express.js",
-    ],
-  },
-  {
-    title: "Frontend & Mobile",
-    iconName: "Layout",
-    genre: "User Experience",
-    description: "Responsive, dynamic user interfaces and cross-platform mobile apps",
-    skills: [
-      "React.js",
-      "Next.js",
-      "React Native",
-      "TypeScript",
-      "JavaScript",
-      "Tailwind CSS",
-      "GSAP",
-      "Thymeleaf",
-      "HTML5",
-      "CSS3",
-    ],
-  },
-  {
-    title: "CMS & E-Commerce",
-    iconName: "ShoppingBag",
-    genre: "E-Commerce",
-    description: "Custom plugin development, WooCommerce solutions, and headless CMS",
-    skills: [
-      "WordPress",
-      "WooCommerce",
-      "Custom WordPress Plugins",
-      "Headless CMS",
-      "REST API Custom Endpoints",
     ],
   },
   {
     title: "Databases & Tools",
     iconName: "Database",
-    genre: "Infrastructure",
-    description: "Relational/document databases, API testing, and version control",
+    genre: "Data & DevOps",
+    description: "Relational data management, API verification, and version control",
     skills: [
-      "MySQL/MariaDB",
-      "MongoDB",
-      "REST APIs",
+      "MySQL",
       "Postman",
       "Git",
       "GitHub",
-      "Apache",
+      "XAMPP",
+      "MongoDB",
       "Nginx",
+      "Apache",
+      "Linux",
+    ],
+  },
+  {
+    title: "CMS & E-Commerce",
+    iconName: "ShoppingBag",
+    genre: "Commercial Solutions",
+    description: "Multi-restaurant platforms, custom plugins, and WooCommerce backends",
+    skills: [
+      "WordPress",
+      "WooCommerce",
+      "Custom WordPress Plugins",
+      "REST API Custom Endpoints",
+      "Shopify (Basic CMS)",
+      "Headless CMS",
+    ],
+  },
+  {
+    title: "Frontend & Integrations",
+    iconName: "Layout",
+    genre: "UI & Third-Party APIs",
+    description: "Modern web interfaces, SMS/email gateways, and reactive UI frameworks",
+    skills: [
+      "React.js",
+      "Next.js",
+      "JavaScript",
+      "Tailwind CSS",
+      "Thymeleaf",
+      "Twilio SMS/OTP",
+      "Brevo SMTP",
+      "PHPMailer",
+      "GSAP",
+      "HTML5/CSS3",
     ],
   },
 ];
@@ -144,32 +212,32 @@ export const projectCategoryRows: readonly ProjectCategoryRow[] = [
   {
     id: "featured",
     title: "Top Picks & Featured Releases",
-    subtitle: "Flagship desktop utilities, multi-tenant mobile platforms, and customer booking systems",
+    subtitle: "Flagship desktop utilities, multi-tenant restaurant platforms, and QR ordering engines",
     badge: "TRENDING NOW",
+  },
+  {
+    id: "laravel",
+    title: "Laravel & PHP Systems",
+    subtitle: "Digittrix client platforms, ScanDine QR ordering, and enterprise admin backends",
+    badge: "CORE STACK",
+  },
+  {
+    id: "api",
+    title: "Java, Spring Boot & Backend APIs",
+    subtitle: "Production REST architectures, Spring Data JPA platforms, and third-party integrations",
+    badge: "BACKEND HEAVY",
+  },
+  {
+    id: "wordpress",
+    title: "WordPress & WooCommerce Solutions",
+    subtitle: "Custom plugin development, multi-restaurant synchronization, and dynamic cart engines",
+    badge: "ECOMMERCE",
   },
   {
     id: "fullstack",
     title: "Full-Stack Applications",
     subtitle: "Complete end-to-end architectures connecting React/Next.js frontends to secure backends",
     badge: "FULL STACK",
-  },
-  {
-    id: "laravel",
-    title: "Laravel & PHP Systems",
-    subtitle: "Enterprise CRM platforms, administrative backends, and robust ORM architectures",
-    badge: "BACKEND HEAVY",
-  },
-  {
-    id: "wordpress",
-    title: "WordPress & WooCommerce Solutions",
-    subtitle: "Multi-restaurant platforms, headless CMS implementations, and custom eCommerce plugins",
-    badge: "ECOMMERCE",
-  },
-  {
-    id: "api",
-    title: "APIs & Backend Architecture",
-    subtitle: "Scalable REST microservices, third-party gateway integrations, and data dispatch pipelines",
-    badge: "HIGH THROUGHPUT",
   },
 ];
 
@@ -219,7 +287,6 @@ export const projects: readonly Project[] = [
       "Win32 P/Invoke",
       "SkiaSharp",
       "PdfPig",
-      "Shell COM",
       "Inno Setup",
     ],
     categories: ["featured", "api"],
@@ -233,7 +300,43 @@ export const projects: readonly Project[] = [
   },
 
   // --------------------------------------------------
-  // 2. Multi-Restaurant Mobile App Platform
+  // 2. ScanDine — QR Restaurant Ordering System (From Resume)
+  // --------------------------------------------------
+  {
+    id: "scandine",
+    title: "ScanDine — QR-Enabled Restaurant System",
+    tagline: "Contactless QR Ordering & Real-Time Kitchen Dispatch Platform",
+    description:
+      "A QR-enabled Restaurant Ordering System allowing customers to scan table QR codes, browse interactive menus, and place orders directly with automated email dispatch via PHPMailer.",
+    detailedOverview:
+      "Engineered a full-stack contactless dining system designed to streamline restaurant operations. Diners scan QR codes placed on physical tables, which instantly opens a customized digital menu without requiring any app download. Customers customize items, select quantities, and submit orders directly to the kitchen. Built with PHP and MySQL under an optimized XAMPP local environment, featuring automated email confirmations dispatched to guests and restaurant management via PHPMailer.",
+    features: [
+      "Dynamic table-specific QR code routing displaying customized menus",
+      "Interactive digital menu with category filtering, item add-ons, and cart management",
+      "Complete administrative CRUD module for menus, live pricing, and customer orders",
+      "Automated transactional email receipts and kitchen notifications via PHPMailer",
+      "Normalized MySQL database schema optimized for fast order retrieval during rush hours",
+    ],
+    stack: [
+      "PHP",
+      "MySQL",
+      "PHPMailer",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "XAMPP",
+    ],
+    categories: ["featured", "laravel", "fullstack"],
+    matchScore: 98,
+    year: "2024",
+    badge: "QR PLATFORM",
+    visual: "delivery",
+    github: "https://github.com/taruncodes9",
+    role: "Full-Stack PHP Developer",
+  },
+
+  // --------------------------------------------------
+  // 3. Multi-Restaurant Mobile App Platform (Digittrix)
   // --------------------------------------------------
   {
     id: "multi-restaurant-mobile-app",
@@ -242,14 +345,13 @@ export const projects: readonly Project[] = [
     description:
       "A multi-restaurant food ordering platform connecting a React Native mobile application with a central WordPress system and multiple independent WordPress/WooCommerce restaurant backends.",
     detailedOverview:
-      "Engineered an enterprise-grade multi-tenant architecture designed to power food ordering across dozens of independent restaurant branches. A central hub manages master user identity, location-based restaurant discovery, and consolidated push notifications, while routing cart items and checkout orders to independent restaurant WooCommerce instances. Built for zero-downtime reliability with isolated store databases.",
+      "Engineered at Digittrix Infotech, this enterprise multi-tenant architecture powers food ordering across dozens of independent restaurant branches. A central master system handles user authentication, geolocation restaurant discovery, and push notifications, while routing carts and orders to independent satellite restaurant databases.",
     features: [
-      "Centralized master WordPress server managing user discovery and restaurant catalogs",
+      "Centralized master server managing user discovery and restaurant catalogs",
       "Cross-platform React Native mobile client for iOS and Android",
-      "Isolated restaurant backends running autonomous WooCommerce databases",
+      "Independent restaurant backends running autonomous WooCommerce databases",
       "Multi-vendor cart split and concurrent checkout synchronization",
-      "Real-time order status notifications and kitchen dispatch alerts",
-      "Geo-location radius filtering for nearby restaurant delivery zones",
+      "Real-time order status webhooks and kitchen dispatch alerts",
     ],
     stack: [
       "WordPress",
@@ -264,11 +366,11 @@ export const projects: readonly Project[] = [
     year: "2025",
     badge: "ENTERPRISE",
     visual: "hub",
-    role: "Backend Architect & API Developer",
+    role: "Backend Architect & API Developer (Digittrix)",
   },
 
   // --------------------------------------------------
-  // 3. Multi-Restaurant API Architecture
+  // 4. Multi-Restaurant API Architecture (Digittrix)
   // --------------------------------------------------
   {
     id: "multi-restaurant-api-architecture",
@@ -277,12 +379,12 @@ export const projects: readonly Project[] = [
     description:
       "Custom REST API architecture for restaurant discovery, products, authentication, guest carts, user carts, orders, coupons, rewards, and communication between multiple WordPress installations.",
     detailedOverview:
-      "Designed and deployed the core backend REST API layer that facilitates communication across independent restaurant management nodes. Built custom API endpoints with token-based authentication, rate-limiting, and resilient database queries to handle peak dinner-rush traffic spikes with sub-200ms latency.",
+      "Designed and deployed at Digittrix Infotech, this core REST API layer facilitates communication across independent restaurant management nodes with token-based security, query optimization, and sub-200ms response times.",
     features: [
       "Custom REST endpoints for dynamic menu caching and rapid product queries",
-      "Dual cart state handling for anonymous guest sessions and synchronized authenticated users",
-      "Inter-server webhook and signature verification between central and satellite servers",
-      "Comprehensive coupon validation, loyalty reward points, and discount calculations",
+      "Dual cart state handling for anonymous guest sessions and synchronized users",
+      "Inter-server webhook and signature verification between central and satellite nodes",
+      "Coupon validation, loyalty reward points, and discount calculation rules",
       "Optimized MySQL indexes reducing complex join query execution times by 40%",
     ],
     stack: [
@@ -291,17 +393,124 @@ export const projects: readonly Project[] = [
       "WooCommerce",
       "REST API",
       "MySQL",
+      "Postman",
     ],
     categories: ["laravel", "api"],
     matchScore: 97,
     year: "2025",
-    badge: "SYSTEM ARCHITECTURE",
+    badge: "ARCHITECTURE",
     visual: "engine",
-    role: "API Engineer",
+    role: "API Engineer (Digittrix)",
   },
 
   // --------------------------------------------------
-  // 4. Custom API Integrations
+  // 5. Online Course Management System (Java Spring Boot - From Resume)
+  // --------------------------------------------------
+  {
+    id: "online-course-management",
+    title: "Online Course Management System",
+    tagline: "Enterprise Course Registration & Enrollment Tracking Backend",
+    description:
+      "A full-stack web application developed using Java, Spring Boot, and Spring Data JPA for managing online course operations such as student registrations, course catalogs, and enrollment tracking.",
+    detailedOverview:
+      "Architected a robust educational course platform following strict MVC design patterns. The backend provides comprehensive REST APIs for course publishing, curriculum structuring, student enrollment status, and grading records. Thoroughly tested using Postman test collections with MySQL relational persistence.",
+    features: [
+      "Modular Spring Boot REST controllers following clean MVC architecture",
+      "Spring Data JPA repositories for relational student-to-course mapping",
+      "Complete CRUD endpoints for student profiles, course catalogs, and enrollments",
+      "Automated request validation and custom HTTP error response handling",
+      "Thoroughly validated and tested using Postman API collections",
+    ],
+    stack: [
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Data JPA",
+      "MySQL",
+      "Postman",
+    ],
+    categories: ["api", "fullstack"],
+    matchScore: 97,
+    year: "2024",
+    badge: "JAVA & SPRING",
+    visual: "engine",
+    github: "https://github.com/taruncodes9",
+    role: "Java Backend Developer",
+  },
+
+  // --------------------------------------------------
+  // 6. Hotel Management System (Java Spring Boot - From Resume)
+  // --------------------------------------------------
+  {
+    id: "hotel-management-system",
+    title: "Hotel Management System",
+    tagline: "Automated Room Booking & Reservation Management Platform",
+    description:
+      "A Spring Boot backend application to manage hotel room bookings, guest records, and real-time room availability with full CRUD functionality and Postman verification.",
+    detailedOverview:
+      "Developed a reliable hospitality management system that handles room categorization (Deluxe, Suite, Standard), room availability state tracking, customer reservation records, and billing calculations. Powered by Spring MVC and Hibernate ORM for reliable transaction management.",
+    features: [
+      "Room inventory management tracking real-time availability and cleaning statuses",
+      "Reservation scheduling engine preventing double-booking conflicts",
+      "Guest profile tracking with check-in, check-out, and billing history",
+      "Hibernate ORM entity mappings for transactional database operations",
+      "Full CRUD REST API endpoints validated with Postman test suites",
+    ],
+    stack: [
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Hibernate",
+      "Spring Data JPA",
+      "MySQL",
+      "Postman",
+    ],
+    categories: ["api", "laravel"],
+    matchScore: 96,
+    year: "2024",
+    badge: "SPRING BOOT",
+    visual: "hub",
+    github: "https://github.com/taruncodes9",
+    role: "Java Backend Developer",
+  },
+
+  // --------------------------------------------------
+  // 7. Student Management System (Java Spring Boot - From Resume)
+  // --------------------------------------------------
+  {
+    id: "student-management-system",
+    title: "Student Management System",
+    tagline: "Academic Records & Enrollment REST API Backend",
+    description:
+      "A RESTful backend using Spring Boot to manage academic operations including student admissions, semester registrations, course enrollments, and academic performance tracking.",
+    detailedOverview:
+      "Engineered an institutional student management system designed for universities and colleges. Manages student identity records, program assignments, semester roll numbers, and course enrollments with secure database transactions.",
+    features: [
+      "Student admission lifecycle management with unique roll number generation",
+      "Relational data schema mapping departments, courses, and registered students",
+      "Spring Data JPA repositories with custom query methods",
+      "Full CRUD REST APIs tested across edge cases with Postman",
+      "Consistent JSON response formatting and HTTP status code mappings",
+    ],
+    stack: [
+      "Java",
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Data JPA",
+      "MySQL",
+      "Postman",
+    ],
+    categories: ["api"],
+    matchScore: 95,
+    year: "2024",
+    badge: "REST API",
+    visual: "engine",
+    github: "https://github.com/taruncodes9",
+    role: "Java Backend Developer",
+  },
+
+  // --------------------------------------------------
+  // 8. Custom API Integrations (Digittrix)
   // --------------------------------------------------
   {
     id: "custom-api-integrations",
@@ -310,13 +519,13 @@ export const projects: readonly Project[] = [
     description:
       "Backend integrations connecting web applications with external services for authentication, communication, email delivery, and third-party APIs.",
     detailedOverview:
-      "Architected reliable transactional infrastructure connecting Laravel and PHP backend applications with industry-standard third-party providers. Handled async queue processing, failure retries, rate limits, and secure secret management for communications and identity verification.",
+      "Developed at Digittrix Infotech, this production integration layer connects PHP/Laravel systems with Twilio SMS for two-factor verification, Brevo and Gmail SMTP for transactional emails, and asynchronous webhooks with cryptographic verification.",
     features: [
-      "Twilio Programmable SMS & OTP authentication pipeline with automated rate-limiting",
+      "Twilio Programmable SMS & OTP authentication pipeline with rate-limiting",
       "Brevo & Gmail SMTP transactional email queues with delivery status tracking",
       "Secure webhook listener endpoints with cryptographic signature validation",
       "Robust retry mechanisms and fallback notification channels",
-      "Complete Postman API test collections and environment configurations",
+      "Complete Postman test suites and environment configs",
     ],
     stack: [
       "PHP",
@@ -329,13 +538,13 @@ export const projects: readonly Project[] = [
     categories: ["laravel", "api"],
     matchScore: 96,
     year: "2025",
-    badge: "INTEGRATION",
+    badge: "INTEGRATIONS",
     visual: "handshake",
-    role: "Backend Integrator",
+    role: "Backend Integrator (Digittrix)",
   },
 
   // --------------------------------------------------
-  // 5. WordPress & WooCommerce Solutions
+  // 9. WordPress & WooCommerce Solutions (Digittrix)
   // --------------------------------------------------
   {
     id: "wordpress-woocommerce-solutions",
@@ -344,12 +553,12 @@ export const projects: readonly Project[] = [
     description:
       "Custom WordPress and WooCommerce development including backend functionality, product systems, APIs, cart workflows, database operations, and client-specific features.",
     detailedOverview:
-      "Engineered tailored solutions extending WordPress and WooCommerce beyond out-of-the-box limitations. Developed custom plugins to accommodate specialized business models, complex multi-attribute inventory matrices, customized checkout flows, and automated ERP synchronizations.",
+      "Developed at Digittrix Infotech, creating specialized custom plugins, complex multi-attribute variation matrices, customized checkout flows, and database optimizations for heavy WooCommerce stores.",
     features: [
-      "Custom WordPress plugin development adhering to strict WordPress coding standards",
+      "Custom WordPress plugin development adhering to strict coding standards",
       "Advanced product variation engines with dynamic pricing rules and stock triggers",
       "Streamlined checkout flow reducing abandonment rate and improving mobile conversions",
-      "Direct database optimizations and custom tables for heavy reporting workloads",
+      "Direct database optimizations and custom tables for reporting workloads",
       "Secure payment gateway integrations and invoice generation pipelines",
     ],
     stack: [
@@ -364,11 +573,44 @@ export const projects: readonly Project[] = [
     year: "2025",
     badge: "ECOMMERCE",
     visual: "delivery",
-    role: "WordPress & WooCommerce Developer",
+    role: "WordPress & WooCommerce Developer (Digittrix)",
   },
 
   // --------------------------------------------------
-  // 6. Buswala — Bus Booking Platform
+  // 10. Client CRM & Lead Management System (Digittrix)
+  // --------------------------------------------------
+  {
+    id: "client-crm-lead-management",
+    title: "Client CRM & Lead Management System",
+    tagline: "Sales Pipeline Automation & Customer Relationship Platform",
+    description:
+      "A web-based CRM for managing leads, customers, follow-ups, sales pipelines, notes, and communication history through a centralized dashboard.",
+    detailedOverview:
+      "Developed an operational CRM system at Digittrix designed to optimize lead conversion for sales teams. Provides drag-and-drop pipeline visualization, client communication history logs, automated reminder tasks for sales reps, and managerial visibility into team velocity and deal close rates.",
+    features: [
+      "Visual Kanban sales pipeline tracking deals across customized stage funnels",
+      "Comprehensive contact record cards containing conversation notes and reminder dates",
+      "Automated follow-up scheduling with notification alerts for account executives",
+      "Granular user permissions separating agent actions from manager reporting views",
+      "Exportable reporting metrics tracking conversion rates and sales velocity",
+    ],
+    stack: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "REST API",
+      "JavaScript",
+    ],
+    categories: ["laravel", "fullstack", "api"],
+    matchScore: 98,
+    year: "2025",
+    badge: "ENTERPRISE CRM",
+    visual: "handshake",
+    role: "Full-Stack Developer (Digittrix)",
+  },
+
+  // --------------------------------------------------
+  // 11. Buswala — Bus Booking Platform
   // --------------------------------------------------
   {
     id: "buswala",
@@ -377,13 +619,12 @@ export const projects: readonly Project[] = [
     description:
       "A modern bus booking and lead-generation platform designed to help users discover routes, compare travel options, and quickly connect with bus operators.",
     detailedOverview:
-      "Developed a full-stack web portal for intercity travel search. Buswala enables travelers to search departure/arrival destinations, compare seating classes (sleeper, semi-sleeper, AC), inspect boarding points on interactive maps, and submit instant booking inquiries directly dispatched to travel operators.",
+      "Developed a full-stack web portal for intercity travel search. Buswala enables travelers to search departure/arrival destinations, compare seating classes, inspect boarding points, and submit booking inquiries directly dispatched to travel operators.",
     features: [
       "Instant route search engine with origin/destination autocomplete and date filtering",
       "Lead generation system dispatches inquiries via instant notifications to operators",
       "Responsive, mobile-optimized UI designed for travelers on handheld devices",
       "MongoDB document models structured for rapid bus schedules and route lookups",
-      "Operator administration interface for managing buses, routes, fares, and bookings",
     ],
     stack: [
       "Next.js",
@@ -401,22 +642,22 @@ export const projects: readonly Project[] = [
   },
 
   // --------------------------------------------------
-  // 7. Developer Portfolio & Agency Website
+  // 12. Developer Portfolio & Streaming Showcase
   // --------------------------------------------------
   {
     id: "developer-portfolio",
-    title: "Developer Portfolio & Agency Website",
-    tagline: "Cinematic Netflix-Inspired Streaming Portfolio Experience",
+    title: "Developer Portfolio & Streaming Showcase",
+    tagline: "Cinematic Netflix-Inspired Developer Streaming Platform",
     description:
-      "A modern developer and web-agency portfolio featuring animated interactions, project showcases, service sections, lead-generation flows, and responsive design.",
+      "A modern developer portfolio modeled after Netflix with profile selection (Developer, Recruiter, Visitor), horizontal row sliders, interactive modals, and fluid typography.",
     detailedOverview:
-      "Designed and coded a standout personal portfolio modeled after premium streaming platforms. Showcases software projects like movies and TV shows across horizontally scrollable rows, complete with hover zoom effects, interactive preview modals, smooth GSAP animations, and GitHub Actions CI/CD deployment.",
+      "Designed and coded a standout personal portfolio modeled after premium streaming platforms. Showcases software projects like movies and TV shows across horizontally scrollable rows, complete with ambient red glow cursor, interactive preview modals, smooth GSAP animations, and GitHub Actions CI/CD deployment.",
     features: [
-      "Netflix-inspired dark streaming layout with horizontally scrollable project rows",
+      "Netflix-inspired 'Who's exploring?' profile selection (Developer, Recruiter, Visitor)",
+      "Horizontally scrollable project rows with smooth chevron slider navigation",
+      "Modern cinematic Netflix Red ambient light glow cursor follower",
       "Interactive project preview modals with tech stacks, deep overviews, and live links",
-      "GSAP smooth scrolling, magnetic UI controls, and motion-safe accessible animations",
       "Zero-latency static export deployed automatically to GitHub Pages via GitHub Actions",
-      "Responsive layout optimized for smartphones, tablets, laptops, and ultra-wide displays",
     ],
     stack: [
       "Next.js",
@@ -434,171 +675,6 @@ export const projects: readonly Project[] = [
     github: "https://github.com/taruncodes9/tarun-portfolio",
     role: "UI/UX Designer & Frontend Developer",
   },
-
-  // --------------------------------------------------
-  // 8. E-Commerce Management Platform
-  // --------------------------------------------------
-  {
-    id: "ecommerce-management-platform",
-    title: "E-Commerce Management Platform",
-    tagline: "Full-Stack Online Retail Hub & Administrative Dashboard",
-    description:
-      "A full-stack e-commerce application with product management, categories, authentication, shopping cart, orders, and an administrative dashboard.",
-    detailedOverview:
-      "Built a complete end-to-end e-commerce solution featuring an intuitive customer shopping experience paired with an administrative management dashboard. Handles category trees, SKU inventory tracking, cart state management, checkout validation, and analytics reporting.",
-    features: [
-      "Customer catalog with search, price filtering, sorting, and pagination",
-      "Secure JWT authentication with role-based access for shoppers and store admins",
-      "Interactive cart with real-time stock verification and order total computation",
-      "Admin dashboard with revenue statistics, order status toggling, and customer logs",
-      "Clean RESTful backend API built with Node.js and MongoDB schemas",
-    ],
-    stack: [
-      "Next.js",
-      "React.js",
-      "Node.js",
-      "MongoDB",
-      "REST API",
-    ],
-    categories: ["fullstack"],
-    matchScore: 96,
-    year: "2025",
-    badge: "FULL STACK",
-    visual: "hub",
-    role: "Full-Stack Developer",
-  },
-
-  // --------------------------------------------------
-  // 9. Client CRM & Lead Management System
-  // --------------------------------------------------
-  {
-    id: "client-crm-lead-management",
-    title: "Client CRM & Lead Management System",
-    tagline: "Sales Pipeline Automation & Customer Relationship Platform",
-    description:
-      "A web-based CRM for managing leads, customers, follow-ups, sales pipelines, notes, and communication history through a centralized dashboard.",
-    detailedOverview:
-      "Developed an operational CRM system designed to optimize lead conversion for sales teams. Provides drag-and-drop pipeline visualization, client communication history logs, automated reminder tasks for sales reps, and managerial visibility into team velocity and deal close rates.",
-    features: [
-      "Visual Kanban sales pipeline tracking deals across customized stage funnels",
-      "Comprehensive contact record cards containing conversation notes and reminder dates",
-      "Automated follow-up scheduling with notification alerts for account executives",
-      "Granular user permissions separating agent actions from manager reporting views",
-      "Exportable reporting metrics tracking conversion rates, drop-off stages, and team revenue",
-    ],
-    stack: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "REST API",
-    ],
-    categories: ["laravel", "fullstack", "api"],
-    matchScore: 98,
-    year: "2025",
-    badge: "ENTERPRISE CRM",
-    visual: "handshake",
-    role: "Full-Stack Developer",
-  },
-
-  // --------------------------------------------------
-  // 10. Laravel Admin & API Platform
-  // --------------------------------------------------
-  {
-    id: "laravel-admin-api-platform",
-    title: "Laravel Admin & API Platform",
-    tagline: "Secure Admin Panel with Granular Role-Based Access Controls",
-    description:
-      "A backend management platform built with Laravel featuring authentication, role-based access, CRUD operations, database relationships, validation, and REST APIs.",
-    detailedOverview:
-      "Architected a production backend portal leveraging the power of Laravel's ecosystem. Built clean Eloquent ORM relationship structures, automated database migrations, robust request validation form requests, and secure token authentication with Laravel Sanctum.",
-    features: [
-      "Multi-tenant Role-Based Access Control (RBAC) with granular permission trees",
-      "Clean Eloquent ORM database relationships (One-to-Many, Many-to-Many, Polymorphic)",
-      "Secure REST API endpoints with Sanctum token management and API throttling",
-      "Automated background jobs and queue dispatching for resource-heavy computations",
-      "Comprehensive server-side input validation and error sanitization",
-    ],
-    stack: [
-      "Laravel",
-      "PHP",
-      "MySQL",
-      "REST API",
-      "JavaScript",
-    ],
-    categories: ["laravel", "api"],
-    matchScore: 97,
-    year: "2025",
-    badge: "LARAVEL CORE",
-    visual: "engine",
-    role: "Backend Architect",
-  },
-
-  // --------------------------------------------------
-  // 11. Real-Time Order Tracking System
-  // --------------------------------------------------
-  {
-    id: "real-time-order-tracking",
-    title: "Real-Time Order Tracking System",
-    tagline: "Live Order Status & Dispatch Monitoring System",
-    description:
-      "A food and delivery tracking concept allowing users to follow order progress through different stages while providing an administrative interface for managing orders.",
-    detailedOverview:
-      "Designed a real-time event-driven dispatch interface that bridges restaurant operations and customer expectations. Provides a visual status progress tracker for customers and a rapid order action board for kitchen and delivery personnel.",
-    features: [
-      "Live order lifecycle state machine (Received -> Preparing -> Out for Delivery -> Delivered)",
-      "Administrative order fulfillment dashboard with quick status update controls",
-      "Animated step progress timeline showing timestamps and estimated delivery time",
-      "Optimized polling and websocket-ready API architecture for low network overhead",
-      "Mobile-friendly interface built with Next.js and Tailwind CSS",
-    ],
-    stack: [
-      "Next.js",
-      "React.js",
-      "Node.js",
-      "MongoDB",
-      "REST API",
-    ],
-    categories: ["fullstack", "api"],
-    matchScore: 94,
-    year: "2025",
-    badge: "REAL TIME",
-    visual: "delivery",
-    role: "Full-Stack Developer",
-  },
-
-  // --------------------------------------------------
-  // 12. WordPress REST API Headless CMS
-  // --------------------------------------------------
-  {
-    id: "wordpress-headless-cms",
-    title: "WordPress REST API Headless CMS",
-    tagline: "Decoupled Architecture with Next.js & Custom WordPress Endpoints",
-    description:
-      "A headless WordPress architecture where WordPress manages content while a modern Next.js frontend consumes custom REST APIs to deliver a fast and interactive experience.",
-    detailedOverview:
-      "Engineered a modern headless architecture that decouples content management from frontend presentation. Editors retain WordPress's familiar publishing interface, while readers experience instantaneous page loads powered by Next.js static site generation and client-side hydration.",
-    features: [
-      "Decoupled headless CMS architecture with isolated frontend and backend services",
-      "Custom WordPress REST endpoints delivering sanitized and optimized JSON data",
-      "Next.js frontend with Static Site Generation (SSG) for lightning-fast delivery",
-      "Dynamic routing and automated on-demand revalidation triggers",
-      "Structured SEO metadata schema injection for optimal search engine ranking",
-    ],
-    stack: [
-      "WordPress",
-      "PHP",
-      "REST API",
-      "Next.js",
-      "React.js",
-    ],
-    categories: ["wordpress", "fullstack", "api"],
-    matchScore: 96,
-    year: "2025",
-    badge: "HEADLESS CMS",
-    visual: "hub",
-    role: "Full-Stack Architect",
-  },
 ];
 
 export interface ExperienceItem {
@@ -614,15 +690,15 @@ export interface ExperienceItem {
 export const experience: readonly ExperienceItem[] = [
   {
     period: "Sept 2025 - Present",
-    role: "PHP Laravel Developer",
+    role: "PHP / Laravel Developer",
     company: "Digittrix Infotech Pvt. Ltd.",
-    season: "Season 2",
+    season: "Season 2 (Current)",
     description:
-      "Full-time PHP/Laravel developer at Digittrix Infotech Pvt. Ltd., working on real-world client projects involving backend development, REST APIs, database management, and application deployment.",
+      "Full-time PHP/Laravel developer at Digittrix Infotech Pvt. Ltd., engineering client web applications, REST APIs, database architectures, and third-party communication pipelines.",
     highlights: [
-      "Engineered multi-restaurant mobile backend APIs and database architectures",
+      "Engineered multi-restaurant mobile backend APIs and synchronized satellite store databases",
       "Developed custom CRM solutions with automated lead tracking and notification pipelines",
-      "Integrated third-party APIs including Twilio SMS, Brevo, and payment gateways",
+      "Integrated third-party APIs including Twilio SMS/OTP, Brevo transactional email, and payment gateways",
       "Configured and maintained production deployments on Apache and Nginx web servers",
     ],
     tags: [
@@ -632,6 +708,8 @@ export const experience: readonly ExperienceItem[] = [
       "MySQL",
       "WordPress",
       "WooCommerce",
+      "Twilio",
+      "Brevo",
       "Nginx",
       "Apache",
     ],
@@ -639,24 +717,26 @@ export const experience: readonly ExperienceItem[] = [
 
   {
     period: "Jan 2025 - July 2025",
-    role: "Java Backend Intern",
-    company: "Pisoft Solutions",
+    role: "Full Stack Java Developer Intern",
+    company: "Pisoft Informatics Pvt. Ltd.",
     season: "Season 1",
     description:
-      "Completed a Java internship at Pisoft Solutions focused on Spring Boot, Spring MVC, Thymeleaf, and Spring Data JPA, gaining hands-on experience in MVC architecture and backend web application development.",
+      "Completed a 6-month Java internship at Pisoft Informatics focused on Spring Boot, Hibernate, Thymeleaf, and Spring Data JPA, gaining hands-on experience in MVC architecture, backend development, debugging, and deployment.",
     highlights: [
-      "Built modular web applications following strict Model-View-Controller patterns",
-      "Implemented relational database mapping and repositories with Spring Data JPA",
-      "Engineered server-rendered web views utilizing Thymeleaf templates",
-      "Gained foundational software engineering practices in OOP and design patterns",
+      "Developed scalable web applications using Spring Boot, Hibernate, and Thymeleaf",
+      "Implemented RESTful APIs and integrated MySQL databases with Spring Data JPA",
+      "Performed CRUD operations and managed relational database schemas using MySQL",
+      "Gained hands-on experience in backend debugging, deployment, and team collaboration",
     ],
     tags: [
       "Java",
       "Spring Boot",
+      "Hibernate",
       "Spring MVC",
       "Thymeleaf",
       "Spring Data JPA",
       "MySQL",
+      "Postman",
     ],
   },
 ];
