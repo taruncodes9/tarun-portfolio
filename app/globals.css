@@ -50,9 +50,3 @@ body {
 .netflix-vignette {
   background: radial-gradient(circle at 50% 30%, transparent 40%, rgba(20, 20, 20, 0.8) 80%, #141414 100%);
 }
-
-/* Hide cursor when custom cursor active */
-html.has-custom-cursor,
-html.has-custom-cursor * {
-  cursor: none !important;
-}

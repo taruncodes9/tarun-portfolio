@@ -110,7 +110,7 @@ export default function ProjectRow({ row, projects, onSelectProject }: Props) {
         <div
           ref={scrollRef}
           onScroll={checkScroll}
-          className="flex gap-2.5 sm:gap-4 overflow-x-auto px-3 sm:px-6 md:px-12 py-2 no-scrollbar scroll-smooth"
+          className="flex items-center gap-3 sm:gap-4 overflow-x-auto px-3 sm:px-6 md:px-12 py-4 no-scrollbar scroll-smooth"
         >
           {projects.map((project) => (
             <ProjectCard
